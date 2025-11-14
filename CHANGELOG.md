@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [1.3.18] - 14 November 2025
+
+- fix: auto-sliding behavior when selecting a tab on Flutter 3.35+ caused by a fallback using the wrong tab key when currentContext was null. Correct LTR/RTL detection and safe RenderBox access restored.
+
 ## [1.3.17] - 01 November 2025
 
 - fix: update current index when button is tap

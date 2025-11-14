@@ -537,12 +537,23 @@ class _ButtonsTabBarState extends State<ButtonsTabBar>
           .currentContext
           ?.findRenderObject() as RenderBox;*/
 
+      /*   
       final context = (_textLTR ? _tabKeys.last : _tabKeys.first).currentContext;
       if (context != null) {
         renderBox = context.findRenderObject() as RenderBox;
       } else {
         // fallback, por exemplo:
         return;
+      }*/
+
+      // get the first or last tab depending on direction (compatível com Flutter 3.35)
+      final key = _textLTR ? _tabKeys.first : _tabKeys.last;
+      final ctx = key.currentContext;
+
+      if (ctx != null) {
+        renderBox = ctx.findRenderObject() as RenderBox;
+      } else {
+        return; // evita crash e mantém comportamento
       }
 
 
@@ -559,14 +570,24 @@ class _ButtonsTabBarState extends State<ButtonsTabBar>
       /*renderBox = (_textLTR ? _tabKeys.last : _tabKeys.first)
           .currentContext
           ?.findRenderObject() as RenderBox;*/
-
+      /* 
       final context = (_textLTR ? _tabKeys.last : _tabKeys.first).currentContext;
       if (context != null) {
         renderBox = context.findRenderObject() as RenderBox;
       } else {
         // fallback, por exemplo:
         return;
-      }  
+      } */
+      // get the first or last tab depending on direction (compatível com Flutter 3.35)
+      final key = _textLTR ? _tabKeys.first : _tabKeys.last;
+      final ctx = key.currentContext;
+
+      if (ctx != null) {
+        renderBox = ctx.findRenderObject() as RenderBox;
+      } else {
+        return; // evita crash e mantém comportamento
+      }
+
 
       // get its position
       position = renderBox.localToGlobal(tabsContainerOffset).dx;
